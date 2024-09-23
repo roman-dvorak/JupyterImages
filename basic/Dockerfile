@@ -1,4 +1,4 @@
-ARG REGISTRY=https://npm.pkg.github.com/
+ARG REGISTRY=https://ghcr.io
 ARG OWNER=roman-dvorak
 ARG BASE_CONTAINER=$REGISTRY/$OWNER/jupyter_basic
 FROM $BASE_CONTAINER
