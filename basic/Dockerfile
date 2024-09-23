@@ -28,7 +28,7 @@ RUN apt-get update --yes && \
 RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Install Python 3 packages
-RUN sudo pip3 install --yes \
+RUN sudo pip3 install \
     'altair' \
     'beautifulsoup4' \
     'bokeh' \
@@ -59,7 +59,8 @@ RUN sudo pip3 install --yes \
     'statsmodels' \
     'sympy' \
     'widgetsnbextension' \
-    'xlrd' && \
+    'xlrd' \
+     --break-system-packages && \
 #    mamba clean --all -f -y && \
 #    fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
