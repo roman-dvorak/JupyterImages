@@ -9,6 +9,7 @@ LABEL maintainer="Roman Dvorak <dvorak@ujf.cas.cz>"
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+
 USER root
 
 RUN apt-get update --yes && \
