@@ -21,7 +21,7 @@ RUN apt-get update --yes && \
     dvipng \
     # for matplotlib anim
     ffmpeg \ 
-    sudo sshfs python3-pip gosu fuse fuse3 && \
+    sudo sshfs python3-pip gosu fuse fuse3 jupyterlab-sftp && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
@@ -29,6 +29,7 @@ RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN groupadd fuse && usermod -a -G fuse jovyan
 
+RUN sudo mamba install --yes jupyterlab-git conda-forge::blas=*=openblas pytables
 # Install Python 3 packages
 RUN sudo pip3 install \
     'astropy' \
@@ -64,8 +65,8 @@ RUN sudo pip3 install \
     'widgetsnbextension' \
     'xlrd' \
      --break-system-packages && \
-#    mamba clean --all -f -y && \
-#    fix-permissions "${CONDA_DIR}" && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
 USER ${NB_UID}
@@ -74,6 +75,7 @@ USER ${NB_UID}
 WORKDIR /tmp
 RUN git clone https://github.com/PAIR-code/facets && \
     jupyter nbclassic-extension install facets/facets-dist/ --sys-prefix && \
+    jupyter labextension install @hadim/jupyterlab-sftp && \
     rm -rf /tmp/facets && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
