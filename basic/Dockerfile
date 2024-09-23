@@ -1,6 +1,6 @@
-ARG REGISTRY=ghcr.io
+ARG REGISTRY=https://npm.pkg.github.com/
 ARG OWNER=roman-dvorak
-ARG BASE_CONTAINER=$REGISTRY/$OWNER/jupiterimages
+ARG BASE_CONTAINER=$REGISTRY/$OWNER/jupyter_basic
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Roman Dvorak <dvorak@ujf.cas.cz>"
