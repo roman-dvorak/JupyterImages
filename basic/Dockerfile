@@ -21,7 +21,7 @@ RUN apt-get update --yes && \
     dvipng \
     # for matplotlib anim
     ffmpeg \ 
-    sudo sshfs python3-pip && \
+    sudo sshfs python3-pip gosu su-exec  && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
