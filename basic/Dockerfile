@@ -29,12 +29,13 @@ RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Install Python 3 packages
 RUN sudo pip3 install \
+    'astropy' \
     'altair' \
     'beautifulsoup4' \
     'bokeh' \
     'bottleneck' \
     'cloudpickle' \
-    'conda-forge::blas=*=openblas' \
+    #'conda-forge::blas=*=openblas' \
     'cython' \
     'dask' \
     'dill' \
