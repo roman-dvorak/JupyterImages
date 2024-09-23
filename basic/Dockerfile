@@ -1,6 +1,6 @@
 ARG REGISTRY=ghcr.io
 ARG OWNER=roman-dvorak
-ARG BASE_CONTAINER=$REGISTRY/$OWNER/basic-notebook
+ARG BASE_CONTAINER=$REGISTRY/$OWNER/jupiterimages
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Roman Dvorak <dvorak@ujf.cas.cz>"
