@@ -1,6 +1,6 @@
-ARG REGISTRY=ghcr.io
-ARG OWNER=roman-dvorak
-ARG BASE_CONTAINER=$REGISTRY/$OWNER/jupyter_basic
+ARG REGISTRY=quay.io
+ARG OWNER=jupyter
+ARG BASE_CONTAINER=$REGISTRY/$OWNER/minimal-notebook
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Roman Dvorak <dvorak@ujf.cas.cz>"
