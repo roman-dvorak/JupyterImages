@@ -21,11 +21,13 @@ RUN apt-get update --yes && \
     dvipng \
     # for matplotlib anim
     ffmpeg \ 
-    sudo sshfs python3-pip gosu fuse3 && \
+    sudo sshfs python3-pip gosu fuse fuse3 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
 RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN groupadd fuse && usermod -a -G fuse jovyan
 
 # Install Python 3 packages
 RUN sudo pip3 install \
