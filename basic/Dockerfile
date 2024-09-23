@@ -29,7 +29,7 @@ RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN groupadd fuse && usermod -a -G fuse jovyan
 
-#RUN sudo mamba install --yes jupyterlab-git jupyterlab-sftp conda-forge::blas=*=openblas pytables
+#RUN sudo mamba install --yes jupyterlab-git jupyterlab-github jupyterlab-apod conda-forge::blas=*=openblas pytables
 # Install Python 3 packages
 RUN sudo pip3 install \
     'astropy' \
@@ -45,7 +45,7 @@ RUN sudo pip3 install \
     'h5py' \
     'ipympl' \
     'ipywidgets' \
-    'jupyterlab-git' 'jupyterlab-sftp' \
+    jupyterlab-git jupyterlab-github jupyterlab-apod \
     'matplotlib' \
     'numba' \
     'numexpr' \
