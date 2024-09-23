@@ -43,7 +43,7 @@ RUN sudo pip3 install \
     'ipympl' \
     'ipywidgets' \
     'jupyterlab-git' \
-    'matplotlib-base' \
+    'matplotlib' \
     'numba' \
     'numexpr' \
     'openpyxl' \
