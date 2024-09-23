@@ -21,13 +21,14 @@ RUN apt-get update --yes && \
     dvipng \
     # for matplotlib anim
     ffmpeg \ 
-    sshfs && \
+    sudo sshfs python3-pip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-USER ${NB_UID}
+
+RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Install Python 3 packages
-RUN mamba install --yes \
+RUN sudo pip3 install --yes \
     'altair' \
     'beautifulsoup4' \
     'bokeh' \
@@ -62,6 +63,8 @@ RUN mamba install --yes \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+USER ${NB_UID}
 
 # Install facets package which does not have a `pip` or `conda-forge` package at the moment
 WORKDIR /tmp
