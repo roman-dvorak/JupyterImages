@@ -21,7 +21,7 @@ RUN apt-get update --yes && \
     dvipng \
     # for matplotlib anim
     ffmpeg \ 
-    sudo sshfs python3-pip gosu fuse fuse3 jupyterlab-sftp && \
+    sudo sshfs python3-pip gosu fuse fuse3 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
@@ -29,7 +29,7 @@ RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN groupadd fuse && usermod -a -G fuse jovyan
 
-RUN sudo mamba install --yes jupyterlab-git conda-forge::blas=*=openblas pytables
+RUN sudo mamba install --yes jupyterlab-git jupyterlab-sftp conda-forge::blas=*=openblas pytables
 # Install Python 3 packages
 RUN sudo pip3 install \
     'astropy' \
@@ -45,7 +45,7 @@ RUN sudo pip3 install \
     'h5py' \
     'ipympl' \
     'ipywidgets' \
-    'jupyterlab-git' \
+    'jupyterlab-git' 'jupyterlab-sftp' \
     'matplotlib' \
     'numba' \
     'numexpr' \
