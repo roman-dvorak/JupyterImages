@@ -29,7 +29,7 @@ RUN echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN groupadd fuse && usermod -a -G fuse jovyan
 
-RUN sudo mamba install --yes jupyterlab-git jupyterlab-sftp conda-forge::blas=*=openblas pytables
+#RUN sudo mamba install --yes jupyterlab-git jupyterlab-sftp conda-forge::blas=*=openblas pytables
 # Install Python 3 packages
 RUN sudo pip3 install \
     'astropy' \
@@ -77,7 +77,7 @@ RUN git clone https://github.com/PAIR-code/facets && \
     jupyter nbclassic-extension install facets/facets-dist/ --sys-prefix && \
     jupyter labextension install @hadim/jupyterlab-sftp && \
     rm -rf /tmp/facets && \
-    fix-permissions "${CONDA_DIR}" && \
+    # fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
 # Import matplotlib the first time to build the font cache
