@@ -50,7 +50,7 @@ RUN sudo pip3 install \
     'pandas' \
     'patsy' \
     'protobuf' \
-    'pytables' \
+#    'pytables' \
     'pyarrow' \
     'scikit-image' \
     'scikit-learn' \
